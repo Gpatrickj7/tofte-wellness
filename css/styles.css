@@ -1,0 +1,210 @@
+/* Base Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Base Colors */
+    --background-color: #f1f0eb;
+    --topo-line-color: #d0d8dd;
+
+    /* Typography Colors */
+    --primary-brand-color: #48535f;
+    --secondary-brand-color: #90A0A8; /* Muted blue-gray for "wellness" */
+    --accent-blue: #32A9D8; /* Clear blue for accents */
+    
+    /* Text Colors */
+    --heading-color: #49535F; /* Deep indigo gray for headings */
+    --body-text-color: #B7C5CF; /* Mineral blue for body text */
+    --highlight-color: #F9E076; /* Bright yellow for highlights */
+
+}
+
+
+
+body {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--body-text-color);
+    background-color: var(--background-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Coming Soon Page */
+.coming-soon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.topo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.07;
+    background-image: url('../img/TOFTE.png');
+    background-repeat: repeat;
+    z-index: -1;
+}
+
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(20px); }
+    100% {opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+    margin-bottom: 2rem;
+}
+
+.logo img {
+    max-width: 381px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        max-width: 341px;
+    }
+}
+
+h1, h2, h3 {
+    color: var(--heading-color);
+}
+/* Typography for Headings */
+h1, h2, h3, .logo {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; /* Extra Bold */
+    letter-spacing: -0.02em;
+
+}
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+h2{
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tagline {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    color: var(--secondary-brand-color);
+}
+
+/* Newsletter form */
+.newsletter {
+    margin: 3rem 0;
+}
+
+.newsletter h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.newsletter form {
+  display: flex;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.newsletter input {
+  flex-grow: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 2px 0 0 2px;
+  font-size: 0.9rem;
+}
+
+.newsletter button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+  background-color: 2d96c0;
+}
+
+/* Social Links */
+.social-links {
+  margin-top: 2rem;
+}
+
+.social-links a {
+  margin: 0 1rem;
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary-brand-color);
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--secondary-brand-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .newsletter form {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .newsletter input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+  }
+  
+  .newsletter button {
+    width: 100%;
+    border-radius: 2px;
+  }
+}
