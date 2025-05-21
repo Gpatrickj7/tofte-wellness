@@ -8,23 +8,56 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailInput = this.querySelector('input[type="email"]');
 
             if(emailInput && emailInput.value) {
-                //Display Success message for the time being
-                //will eventually send to backend
+                //Create form data to send to formspree
+                const formData = new FormData(this);
+                //send data form to formspree
+                fetch("https://formspree.io/f/xovdzqvw", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                    
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
 
-                //success message 
-                const successMessage = document.createElement('p');
-                successMessage.textContent = "Thanks! we'll notify you when we launch.";
-                successMessage.style.color = '#49535F';
+                })
 
-                //hide the form
-                this.style.display = 'none';
+                .then (data => {
+                    //handle success
 
-                //show success message
-                this.parentNode.appendChild(successMessage);
+                    //success message 
+                    const successMessage = document.createElement('p');
+                    successMessage.textContent = "Thanks! we'll notify you when we launch.";
+                    successMessage.style.color = '#49535F';
 
+                    //hide the form
+                    this.style.display = 'none';
+
+                    //show success message
+                    this.parentNode.appendChild(successMessage);
+
+                })
+                .catch(error => {
+                    //Handle error
+                    console.error('Error:', error);
+                    const errorMessage = document.createElement('p');
+                    errorMessage.textContent = "Oops! Something went wrong. Please try again.";
+                    errorMessage.style.color = '#ff3333';
+
+                    newsletterForm.insertAdjacentElement('afterend', errorMessage);
+
+
+                });
             }
+
         });
-}
+    }
+
 
 
     //subtle logo animation
