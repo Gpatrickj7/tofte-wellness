@@ -8,29 +8,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailInput = this.querySelector('input[type="email"]');
 
             if(emailInput && emailInput.value) {
-                //Create form data to send to formspree
-                const formData = new FormData(this);
-                //send data form to formspree
+                // Send JSON data instead of FormData
                 fetch("https://newsletter-api-one.vercel.app/api/subscribe", {
                     method: "POST",
-                    body: formData,
                     headers: {
-                        'Accept': 'application/json'
-                    }
-                    
+                        'Content-Type': 'application/json'  // Changed this
+                    },
+                    body: JSON.stringify({                  // Changed this
+                        email: emailInput.value
+                    })
                 })
                 .then(response => {
                     if (response.ok) {
                         return response.json();
                     }
                     throw new Error('Network response was not ok.');
-
                 })
-
-                .then (data => {
+                .then(data => {
                     //handle success
-
-                    //success message 
                     const successMessage = document.createElement('p');
                     successMessage.textContent = "Thanks! we'll notify you when we launch.";
                     successMessage.style.color = '#49535F';
@@ -40,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     //show success message
                     this.parentNode.appendChild(successMessage);
-
                 })
                 .catch(error => {
                     //Handle error
@@ -50,18 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorMessage.style.color = '#ff3333';
 
                     newsletterForm.insertAdjacentElement('afterend', errorMessage);
-
-
                 });
             }
-
         });
     }
 
-
-
     //subtle logo animation
-
     const logo = document.querySelector('.logo');
     if (logo) {
         logo.addEventListener('mouseover', function() {
