@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 //Create form data to send to formspree
                 const formData = new FormData(this);
                 //send data form to formspree
-                fetch("https://formspree.io/f/xovdzqvw", {
+                fetch("https://newsletter-api-one.vercel.app/api/subscribe", {
                     method: "POST",
                     body: formData,
                     headers: {
