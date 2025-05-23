@@ -25,6 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error('Network response was not ok.');
                 })
                 .then(data => {
+
+                    
+                    // Track the newsletter signup event
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'newsletter_signup', {
+                        'event_category': 'engagement',
+                        'event_label': 'newsletter_form'
+                    });
+                }
                     //handle success
                     const successMessage = document.createElement('p');
                     successMessage.textContent = "Thanks! we'll notify you when we launch.";
