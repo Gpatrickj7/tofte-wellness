@@ -75,7 +75,7 @@
 
             //Redirect to dashboard after short delay
             setTimeout(() => {
-                window.location.href = 'dashboard.html';
+                window.location.href = '../dashboard/';
             }, 1500);
 
         })
@@ -101,7 +101,7 @@
 
     //Check if user is already logged in
     if (localStorage.getItem('adminToken')) {
-        window.location.href = 'dashboard.html';
+        window.location.href = '../dashboard/';
     }
 
  });
